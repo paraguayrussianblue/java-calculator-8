@@ -43,7 +43,10 @@ public class CalculatorService {
     public long addNumbers(List<String> numbers){
         long sum = 0;
         for(String num : numbers){
+            if(num.isEmpty()) throw new IllegalArgumentException("비어 있는 값");
+            if(!num.matches("-?\\d+")) throw new IllegalArgumentException("잘못된 입력");
             long v = Long.parseLong(num);
+            if(v <= 0) throw new IllegalArgumentException("양수만 가능");
             sum += v;
         }
         return sum;
