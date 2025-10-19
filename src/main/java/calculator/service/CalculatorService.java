@@ -30,7 +30,7 @@ public class CalculatorService {
                 throw new IllegalArgumentException("커스텀 구분자는 1글자일 것");
             }
 
-            String changedInput = input.substring(idx + 1);
+            String changedInput = input.substring(idx + 2);
             numbers = Arrays.asList(changedInput.split(DELIMITER + "|" + Pattern.quote(custom)));
 
             return addNumbers(numbers);
