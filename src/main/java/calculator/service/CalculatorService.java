@@ -32,9 +32,21 @@ public class CalculatorService {
 
             String changedInput = input.substring(idx + 1);
             numbers = Arrays.asList(changedInput.split(DELIMITER + "|" + Pattern.quote(custom)));
+
+            return addNumbers(numbers);
         }
 
         numbers = Arrays.asList(input.split(DELIMITER));
+        return addNumbers(numbers);
+    }
+
+    public long addNumbers(List<String> numbers){
+        long sum = 0;
+        for(String num : numbers){
+            long v = Long.parseLong(num);
+            sum += v;
+        }
+        return sum;
     }
 
 }
