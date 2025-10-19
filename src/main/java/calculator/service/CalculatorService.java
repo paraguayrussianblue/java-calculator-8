@@ -8,7 +8,7 @@ public class CalculatorService {
 
     private static final String BEGINNING_CUSTOM_DELIMITER = "//";
     private static final String END_CUSTOM_DELIMITER = "\\n";
-    private static final String DELIMITER = "[,:]";
+    private static final String BASE_DELIMITER = "[,:]";
 
     public long calculate(String input) {
         List<String> numbers;
@@ -31,12 +31,12 @@ public class CalculatorService {
             }
 
             String changedInput = input.substring(idx + 2);
-            numbers = Arrays.asList(changedInput.split(DELIMITER + "|" + Pattern.quote(custom)));
+            numbers = Arrays.asList(changedInput.split(BASE_DELIMITER + "|" + Pattern.quote(custom)));
 
             return addNumbers(numbers);
         }
 
-        numbers = Arrays.asList(input.split(DELIMITER));
+        numbers = Arrays.asList(input.split(BASE_DELIMITER));
         return addNumbers(numbers);
     }
 
