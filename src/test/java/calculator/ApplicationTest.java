@@ -52,7 +52,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 구분자로_끝나는_문자열() {
-        assertThatThrownBy(() -> calculator.calculate("//;\n1;43;"))
+        assertThatThrownBy(() -> calculator.calculate("//;\\n1;43;"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
