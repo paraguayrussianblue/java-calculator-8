@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class CalculatorService {
 
     private static final String BEGINNING_CUSTOM_DELIMITER = "//";
-    private static final String END_CUSTOM_DELIMITER = "\n";
+    private static final String END_CUSTOM_DELIMITER = "\\n";
     private static final String DELIMITER = "[,:]";
 
     public long calculate(String input) {
