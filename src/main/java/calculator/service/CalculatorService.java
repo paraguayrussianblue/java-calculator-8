@@ -1,0 +1,40 @@
+package calculator.service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Pattern;
+
+public class CalculatorService {
+
+    private static final String BEGINNING_CUSTOM_DELIMITER = "//";
+    private static final String END_CUSTOM_DELIMITER = "\n";
+    private static final String DELIMITER = "[,:]";
+
+    public long calculate(String input) {
+        List<String> numbers;
+
+        // 입력이 없을 시 0으로 처리
+        if(input == null || input.isBlank()) {
+            return 0;
+        }
+
+        // 커스텀 구분자 존재시
+        if (input.startsWith(BEGINNING_CUSTOM_DELIMITER)) {
+            int idx = input.indexOf(END_CUSTOM_DELIMITER);
+            if (idx < 0) {
+                throw new IllegalArgumentException("커스텀 구분자 형식 오류");
+            }
+
+            String custom = input.substring(2, idx);
+            if (custom.length() != 1) {
+                throw new IllegalArgumentException("커스텀 구분자는 1글자일 것");
+            }
+
+            String changedInput = input.substring(idx + 1);
+            numbers = Arrays.asList(changedInput.split(DELIMITER + "|" + Pattern.quote(custom)));
+        }
+
+        numbers = Arrays.asList(input.split(DELIMITER));
+    }
+
+}
