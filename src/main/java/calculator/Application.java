@@ -17,7 +17,7 @@ public class Application {
             int newlineIndex = input.indexOf("\n");
 
             if(newlineIndex == -1){
-                throw new IllegalArgumentException("커스텀 구분자 입력 형식 오류");
+                throw new IllegalArgumentException("커스텀 구분자 입력 형식이 유효하지 않습니다.");
             }
             String customDelimiter = input.substring(2, newlineIndex);
             //정규표현식 특수문자 충돌 방지 위해 Pattern.quote 사용
@@ -33,6 +33,20 @@ public class Application {
 
         String[] tokens = numbers.split(delimiter);        
         int sum = 0;
+
+        for(String token : tokens){
+            try {
+                int number = Integer.parseInt(token);
+
+                if(number < 0){
+                    throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+                }
+                sum += number;
+            }
+            catch(NumberFormatException e){
+                throw new IllegalArgumentException("입력 형식이 유효하지 않습니다.");
+            }
+        }
 
         return sum;
     }
