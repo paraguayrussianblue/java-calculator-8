@@ -52,6 +52,7 @@ public class Application {
 
     public static void main(String[] args) {
         //입력받기
+        System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = camp.nextstep.edu.missionutils.Console.readLine();
         //결과 계산 및 출력
         int result = calculate(input);
