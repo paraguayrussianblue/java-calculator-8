@@ -1,4 +1,5 @@
 package calculator;
+import java.util.regex.Pattern;
 
 public class Application {
     public static int calculate(String input){
@@ -18,8 +19,9 @@ public class Application {
             if(newlineIndex == -1){
                 throw new IllegalArgumentException("커스텀 구분자 입력 형식 오류");
             }
-
-            delimiter += "|" + input.substring(2, newlineIndex);
+            String customDelimiter = input.substring(2, newlineIndex);
+            //정규표현식 특수문자 충돌 방지 위해 Pattern.quote 사용
+            delimiter += "|" + Pattern.quote(customDelimiter);
             numbers = input.substring(newlineIndex + 1);
             
         }
@@ -29,8 +31,9 @@ public class Application {
             return 0;
         }
 
-        
+        String[] tokens = numbers.split(delimiter);        
         int sum = 0;
+
         return sum;
     }
 
