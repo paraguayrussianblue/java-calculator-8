@@ -1,5 +1,7 @@
 package calculator;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
+;
 
 public class Application {
     public static int calculate(String input){
@@ -53,7 +55,7 @@ public class Application {
     public static void main(String[] args) {
         //입력받기
         System.out.println("덧셈할 문자열을 입력해 주세요.");
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        String input = Console.readLine();
         //결과 계산 및 출력
         int result = calculate(input);
         System.out.println("결과 : " + result);
