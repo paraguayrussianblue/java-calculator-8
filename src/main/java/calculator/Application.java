@@ -19,7 +19,7 @@ public class Application {
             if(newlineIndex == -1){
                 throw new IllegalArgumentException("커스텀 구분자 입력 형식이 유효하지 않습니다.");
             }
-            String customDelimiter = input.substring(2, newlineIndex - 1);
+            String customDelimiter = input.substring(2, newlineIndex);
             //정규표현식 특수문자 충돌 방지 위해 Pattern.quote 사용
             delimiter += "|" + Pattern.quote(customDelimiter);
             numbers = input.substring(newlineIndex + 2);            
